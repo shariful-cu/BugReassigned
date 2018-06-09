@@ -1,8 +1,8 @@
 function [fpr,tpr,auc,rs] = bctm(scores,lab,ttb)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% [fpr,tpr,auc,rs] = bct_m(scores,lab,ttb)
+% [fpr,tpr,auc,rs] = bctm(scores,lab,ttb)
 %
-% BCT_M: Boolean Combination (Testing) of Multiple ROC curves (resulting 
+% BCTM: Boolean Combination (Testing) of Multiple ROC curves (resulting 
 %             from  BCV_M).
 %
 % INPUTS:

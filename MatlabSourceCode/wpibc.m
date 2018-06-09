@@ -8,15 +8,15 @@ clear;
 fprintf('\n\n*****************************************************\n');
 fprintf('        Preparing candidate HMM_RAs soft detecotors          \n');
 fprintf('*****************************************************\n');
-hmpath = '/Users/Shariful/Documents/BugReassigned/PreparedData/Gnome/Sampling/Status/';
+hmpath = '/Users/Shariful/Documents/BugReAssgn/PreparedData/Eclipse/Sampling/OS/';
 ldpath = strcat(hmpath, 'Val');
 [valSeqs, valLab, noValNra, noValRa] = ldseqs(ldpath);
 fprintf('Loaded %d "Not reassigned" (NRA) observations (val)\n', noValNra);
 fprintf('Loaded %d "Reassigned" (RA) observations (val)\n', noValRa);
 
 % COMPUTING scores on the Validation set for all the HMM_RAs soft detectors
-trnHmmPath= '/Users/Shariful/Documents/BugReassigned/TrainedHMMs/Gnome/Status';
-raHmms = (10:10:90); 
+trnHmmPath= '/Users/Shariful/Documents/BugReAssgn/TrainedHMMs/Eclipse/Os';
+raHmms = (10:10:20); 
 nb_thresh = 100;
 fprintf('Computing... scores for %d HMM_RAs soft detectors (val)\n', length(raHmms));
 [scrValRa, aucRaVal] = scr_ra(trnHmmPath, valSeqs, valLab, raHmms, nb_thresh);
@@ -50,37 +50,61 @@ for i = 1 : length(selHmms)
     idx = idx + 2;
 end
 
-% analysis on ROC space
-figure; hold all; roc_fig_set; lmx=cell(1,1); lc=1;
-set(gcf,'visible','off')
-
-rsd = [60;70;90;100;110;120;130;140;150;170;180];
-% TPR = []; FPR = [];
-for i = 1 : length(scrValRa)
-    [fpr, tpr, auc, thr] = RocBugNra(scrValRa{i},valLab,nb_thresh);
-    h1 = plot(fpr, tpr, ':ok');
-end
-
-bsd = [10;20;30;40;80;160;190;200];
-TPR = []; FPR = [];
-for i = 1 : length(selHmms)
-    [fpr, tpr, auc, thr] = RocBugNra(scrValRa{selHmms(i)},valLab,nb_thresh);
-    h2 = plot(fpr,tpr,'--sr');   
-end
-
-
-
 fprintf('***************************************************\n');
 fprintf('         Weighted Pruning is DONE!        \n');
 fprintf('*****************************************************\n');
 
 % CONSTRUCTING Weighted Pruning Iterative Boolean Combination (WPIBC) rules   
 max_iter = 5;
-[fpr, tpr, aucVal, ttb] = ibcvr(scr_val,valLab,nb_thresh,max_iter);
+[wpbcFprVal, wpbcTprVal, aucWpbcVal, ttb] = ibcvr(scr_val,valLab,nb_thresh,max_iter);
 fprintf('***************************************************\n');
 fprintf('         VALIDATION of WPIBC is DONE!              \n');
 fprintf('*****************************************************\n');
 
+%% ANALASIS (Validation) on ROC spacc using 
+figure; hold all; roc_fig_set; lmx=cell(1,1); lc=1;
+set(gcf,'visible','on')
+
+% ploting origianl ROC curves
+
+for i = 1 : length(scrValRa)
+    [fpr, tpr, auc, thr] = RocBugRa(scrValRa{i},valLab,nb_thresh);
+    h1 = plot(fpr, tpr, ':ok');
+end
+% ploting selected diverse ROC curves
+avgAucValRa = 0.0; avgAucValNra = 0.0;
+for i = 1 : length(selHmms)
+    [fpr, tpr, auc, thr] = RocBugRa(scrValRa{selHmms(i)},valLab,nb_thresh);
+    avgAucValRa = avgAucValRa + auc;
+    h2 = plot(fpr,tpr,'--sm');
+    [fpr, tpr, auc, thr] = RocBugNra(scrValNra{i},valLab,nb_thresh);
+    avgAucValNra = avgAucValNra + auc;
+    h3 = plot(fpr,tpr,'--+b');
+end
+avgAucValRa = avgAucValRa / length(selHmms);
+avgAucValNra = avgAucValNra / length(selHmms);
+% ploting the ROCCH(val) 
+% or a combination of the selected ROC curves using WPIBC
+h4 = plot(wpbcFprVal,wpbcTprVal,'--*r');
+
+legend([h1, h2, h3, h4],sprintf('%d pruned redundant HMMRAs soft detectors', length(scrValRa) - length(selHmms)),...
+    sprintf('%d selected HMMRAs, Avg AUC=%.3f', length(selHmms), avgAucValRa),...
+    sprintf('%d selected HMMNRAs, Avg AUC=%.3f', length(selHmms), avgAucValNra),...
+    sprintf('WPIBC, AUC=%.3f', aucWpbcVal),...
+    'location','southeast','interpreter','tex');
+%title('ROC curves of 20 soft HMMs detectors')
+svPath = '/Users/Shariful/Documents/BugReAssgn/Figures/';
+figname = sprintf('%sWPIBC_Val', svPath);
+% saveas(gcf,[figname,'.fig']);
+
+set(gcf,'PaperPositionMode','auto');
+set(gca,'fontsize',12);
+xlhand = get(gca,'xlabel');
+set(xlhand,'fontsize',12);
+ylhand = get(gca,'ylabel');
+set(ylhand,'fontsize',12);
+print('-depsc', '-painters','-loose',[figname,'.eps']);
+% print('-depsc','-pdf',figname)
 
 %% ==========================TESTING================================
 fprintf('\n\n***************************************************\n');
@@ -107,7 +131,47 @@ fprintf('Computing scores is done!\n');
 
 % Combining decisions using the constructed Boolean combination rules
 fprintf('Combining...decisions using the constructed Boolean combination rules\n')
-[fprIbc,tprIbc,aucIbcTest,rrr] = ibctr(scr_test,testlab,ttb);
+[fprWpbc,tprWpbc,aucWpbcTest,rrr] = ibctr(scr_test,testlab,ttb);
 fprintf('***************************************************\n');
 fprintf('            TESTING of WPIBC is DONE!         \n');
 fprintf('*****************************************************\n');
+
+
+%% ANALASIS (Testing) on ROC space 
+figure; hold all; roc_fig_set; lmx=cell(1,1); lc=1;
+set(gcf,'visible','on')
+
+% ploting selected diverse ROC curves
+avgAucRaTest = 0.0; avgAucNraTest = 0.0;
+for i = 1 : length(selHmms)
+    [fpr, tpr, auc, thr] = RocBugRa(scrTestRa{i},testlab,nb_thresh);
+    avgAucRaTest = avgAucRaTest + auc;
+    h1 = plot(fpr,tpr,'--sm');
+    [fpr, tpr, auc, thr] = RocBugNra(scrTestNra{i},testlab,nb_thresh);
+    avgAucNraTest = avgAucNraTest + auc;
+    h2 = plot(fpr,tpr,'--+b');
+end
+avgAucRaTest = avgAucRaTest / length(selHmms);
+avgAucNraTest = avgAucNraTest / length(selHmms);
+% lmx{lc} = sprintf('BBC2, AUC=%.3f', rBbc2Test.auch); lc = lc + 1;
+% ploting the ROCCH(val) 
+% or a combination of the selected ROC curves using WPIBC
+h3 = plot(fprWpbc,tprWpbc,'--*r');
+
+legend([h1, h2, h3],sprintf('%d selected HMMRAs, Avg AUC=%.3f', length(selHmms), avgAucRaTest),...
+    sprintf('%d selected HMMNRAs, Avg AUC=%.3f', length(selHmms), avgAucNraTest),...
+    sprintf('WPIBC, AUC=%.3f', aucWpbcTest),...
+    'location','southeast','interpreter','tex');
+%title('ROC curves of 20 soft HMMs detectors')
+svPath = '/Users/Shariful/Documents/BugReAssgn/Figures/';
+figname = sprintf('%sWPIBC_Test', svPath);
+% saveas(gcf,[figname,'.ig']);
+
+set(gcf,'PaperPositionMode','auto');
+set(gca,'fontsize',12);
+xlhand = get(gca,'xlabel');
+set(xlhand,'fontsize',12);
+ylhand = get(gca,'ylabel');
+set(ylhand,'fontsize',12);
+print('-depsc', '-painters','-loose',[figname,'.eps']);
+% print('-depsc','-pdf',figname)

@@ -1,8 +1,8 @@
 function [fpr,tpr,auc,rs] = ibctr(scores,lab,ttb)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% [fpr,tpr,auc,rs] = ibct(scores,lab,ttb)
+% [fpr,tpr,auc,rs] = ibctr(scores,lab,ttb)
 %
-% IBCT: Iterative Boolean Combination (Testing) of multi-ROC curves.
+% IBCTR: Iterative Boolean Combination (Testing) of multi-ROC curves.
 %
 % Test the combination of IBCV (using ttb).
 %

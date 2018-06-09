@@ -1,6 +1,6 @@
 function [fpc tpc auch] = mrroc_n(scores,lab,nb_thresh)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% [fpc tpc auc] = mrroc(scores,lab,nb_thresh)
+% [fpc tpc auch] = mrroc_n(scores,lab,nb_thresh)
 %
 % Returns the Maximum Realizable ROC (mrroc) of ROC curves associated with the
 % scores and labels (lab).

@@ -1,8 +1,8 @@
 function [fpr,tpr,auc,ttb,rs] = bcvm(scores,lab,nb_thresh,fun)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% [fpr,tpr,auc,ttb,rs] = bcv_m(scores,lab,nb_thresh,fun)
+% [fpr,tpr,auc,ttb,rs] = bcvm(scores,lab,nb_thresh,fun)
 %
-% BCV_M: Boolean Combination (Validation) of Multiple ROC curves.
+% BCVM: Boolean Combination (Validation) of Multiple ROC curves.
 %
 % Combine 1st TWO ROCs (using bcv_tt), then combine their resutling responses
 % with the third, and so on. 
@@ -50,7 +50,7 @@ ttb=cell(1,ncurves);
 ttb{1,1}.nb_thresh = nb_thresh; % to provide bct_m with same nb_thresh.
 
 fprintf(1,'\n*********************************************************\n')
-fprintf(1,'BCV_M: Cumulative Boolean Combination of Multiple ROC curves:\n')
+fprintf(1,'BCVM: Cumulative Boolean Combination of Multiple ROC curves:\n')
 fprintf(1,'Number of combined ROC curves=%d (#thresh=%d)\n',ncurves,nb_thresh);
 fprintf(1,'combining: roc=1-2 ');
 

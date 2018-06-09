@@ -1,0 +1,716 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+                      "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en">
+  <head>
+    <title>Changes made to bug 503706</title>
+
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+
+<link rel="Top" href="https://bugzilla.gnome.org/">
+
+  
+
+
+  
+    <link rel="Show" title="Dependency Tree"
+          href="showdependencytree.cgi?id=503706&amp;hide_resolved=1">
+
+      <link rel="Show" title="Bug Activity"
+            href="show_activity.cgi?id=503706">
+      <link rel="Show" title="Printer-Friendly Version"
+            href="show_bug.cgi?format=multiple&amp;id=503706">
+
+
+
+    
+    <link href="skins/standard/global.css?1500547294"
+          rel="alternate stylesheet" 
+          title="Classic"><link href="skins/standard/global.css?1500547294" rel="stylesheet"
+        type="text/css" ><!--[if lte IE 7]>
+      
+
+
+  <link href="skins/standard/IE-fixes.css?1500547294" rel="stylesheet"
+        type="text/css" >
+<![endif]-->
+
+    <link href="skins/contrib/Gnome/global.css?1501493529" rel="stylesheet"
+        type="text/css" title="Gnome">
+
+    
+
+    
+
+    
+<script type="text/javascript" src="js/yui/yahoo-dom-event/yahoo-dom-event.js?1500547294"></script><script type="text/javascript" src="js/yui/cookie/cookie-min.js?1500547294"></script><script type="text/javascript" src="js/global.js?1500547294"></script>
+
+    <script type="text/javascript">
+    <!--
+        YAHOO.namespace('bugzilla');
+        YAHOO.util.Event.addListener = function (el, sType, fn, obj, overrideContext) {
+               if ( ("onpagehide" in window || YAHOO.env.ua.gecko) && sType === "unload") { sType = "pagehide"; };
+               var capture = ((sType == "focusin" || sType == "focusout") && !YAHOO.env.ua.ie) ? true : false;
+               return this._addListener(el, this._getType(sType), fn, obj, overrideContext, capture);
+         };
+        if ( "onpagehide" in window || YAHOO.env.ua.gecko) {
+            YAHOO.util.Event._simpleRemove(window, "unload", 
+                                           YAHOO.util.Event._unload);
+        }
+        
+        function unhide_language_selector() { 
+            YAHOO.util.Dom.removeClass(
+                'lang_links_container', 'bz_default_hidden'
+            ); 
+        } 
+        YAHOO.util.Event.onDOMReady(unhide_language_selector);
+
+        
+        var BUGZILLA = {
+            param: {
+                cookiepath: '\/',
+                maxusermatches: 50
+            },
+            constant: {
+                COMMENT_COLS: 80
+            },
+            string: {
+                
+
+                attach_desc_required:
+                    'You must enter a Description for this attachment.',
+                component_required:
+                    'You must select a Component for this bug.',
+                description_required:
+                    'You must enter a Description for this bug.',
+                short_desc_required:
+                    'You must enter a Summary for this bug.',
+                version_required:
+                    'You must select a Version for this bug.'
+            }
+        };
+
+    // -->
+    </script>
+
+
+    
+
+    
+    <link rel="search" type="application/opensearchdescription+xml"
+                       title="GNOME Bugzilla" href="./search_plugin.cgi">
+    <link rel="shortcut icon" href="images/favicon.ico" ><link rel="stylesheet" type="text/css"
+      href="extensions/TraceParser/web/style.css">
+  </head>
+
+
+
+  <body onload=""
+        class="bugzilla-gnome-org yui-skin-sam">
+
+
+
+<div id="header">
+<div id="banner">
+  </div>
+
+<table border="0" cellspacing="0" cellpadding="0" id="titles">
+<tr>
+    <td id="title">
+      <p>GNOME Bugzilla &ndash; Activity log for bug 503706: Cycle through form fields with tab button</p>
+    </td>
+
+
+</tr>
+</table>
+
+<table id="lang_links_container" cellpadding="0" cellspacing="0"
+       class="bz_default_hidden"><tr><td>
+</td></tr></table>
+<ul class="links">
+  <li><a href="./">Home</a></li>
+  <li><span class="separator">| </span><a href="enter_bug.cgi">New</a></li>
+    <li><span class="separator">| </span><a href="page.cgi?id=browse.html&amp;product=evince">Browse</a></li>
+  <li><span class="separator">| </span><a href="query.cgi">Search</a></li>
+
+  <li class="form">
+    <span class="separator">| </span>
+    <form action="buglist.cgi" method="get"
+        onsubmit="if (this.quicksearch.value == '')
+                  { alert('Please enter one or more search terms first.');
+                    return false; } return true;">
+    <input type="hidden" id="no_redirect_top" name="no_redirect" value="0">
+    <script type="text/javascript">
+      if (history && history.replaceState) {
+        var no_redirect = document.getElementById("no_redirect_top");
+        no_redirect.value = 1;
+      }
+    </script>
+    <input class="txt" type="text" id="quicksearch_top" name="quicksearch" 
+           title="Quick Search" value="">
+    <input class="btn" type="submit" value="Search" 
+           id="find_top"></form>
+  <a href="page.cgi?id=quicksearch.html" title="Quicksearch Help">[?]</a></li>
+
+  <li><span class="separator">| </span><a href="page.cgi?id=reports.html">Reports</a></li>
+
+  
+    
+      <li id="new_account_container_top">
+        <span class="separator">| </span>
+        <a href="createaccount.cgi">New&nbsp;Account</a>
+      </li>
+
+    <li id="mini_login_container_top">
+  <span class="separator">| </span>
+  <a id="login_link_top" href="show_activity.cgi?id=503706&amp;GoAheadAndLogIn=1"
+     onclick="return show_mini_login_form('_top')">Log In</a>
+
+  
+  <form action="show_activity.cgi?id=503706" method="POST" 
+        class="mini_login bz_default_hidden"
+        id="mini_login_top"
+        onsubmit="return check_mini_login_fields( '_top' );"
+  >
+    <input id="Bugzilla_login_top" 
+           class="bz_login"
+           name="Bugzilla_login"
+           title="Login"
+           onfocus="mini_login_on_focus('_top')"
+    >
+    <input class="bz_password" 
+           id="Bugzilla_password_top" 
+           name="Bugzilla_password"
+           type="password"
+           title="Password"
+    >
+    <input class="bz_password bz_default_hidden bz_mini_login_help" type="text" 
+           id="Bugzilla_password_dummy_top" value="password"
+           title="Password"
+           onfocus="mini_login_on_focus('_top')"
+    >
+      <input type="checkbox" id="Bugzilla_remember_top" 
+             name="Bugzilla_remember" value="on" class="bz_remember"
+                 checked>
+      <label for="Bugzilla_remember_top">Remember</label>
+    <input type="hidden" name="Bugzilla_login_token"
+           value="">
+    <input type="submit" name="GoAheadAndLogIn" value="Log in"
+            id="log_in_top">
+    <script type="text/javascript">
+      mini_login_constants = {
+          "login" : "login",
+          "warning" : "You must set the login and password before logging in."
+      };
+      
+      if (YAHOO.env.ua.gecko || YAHOO.env.ua.ie || YAHOO.env.ua.opera) {
+          YAHOO.util.Event.onDOMReady(function() {
+              init_mini_login_form('_top');
+          });
+      }
+      else {
+          YAHOO.util.Event.on(window, 'load', function () {
+              window.setTimeout(function() {
+                  init_mini_login_form('_top');
+              }, 200);
+          });
+    }
+    </script>
+    <a href="#" onclick="return hide_mini_login_form('_top')">[x]</a>
+  </form>
+</li>
+<li id="forgot_container_top">
+  <span class="separator">| </span>
+  <a id="forgot_link_top" href="show_activity.cgi?id=503706&amp;GoAheadAndLogIn=1#forgot"
+     onclick="return show_forgot_form('_top')">Forgot Password</a>
+  <form action="token.cgi" method="post" id="forgot_form_top"
+        class="mini_forgot bz_default_hidden">
+    <label for="login_top">Login:</label>
+    <input type="text" name="loginname" size="20" id="login_top">
+    <input id="forgot_button_top" value="Reset Password" 
+           type="submit">
+    <input type="hidden" name="a" value="reqpw">
+    <input type="hidden" id="token_top" name="token" value="1502138802-LKRO87PAimTAp0_lkXfIqsheMPXWmzqie0kNzAZ5mwk">
+    <a href="#" onclick="return hide_forgot_form('_top')">[x]</a>
+  </form>
+</li>
+</ul>
+</div> 
+
+<div id="bugzilla-body">
+<div id="message" style="text-align: center;"><span style="font-weight: bold;">GNOME considers <a href="https://wiki.gnome.org/Initiatives/DevelopmentInfrastructure">migrating from Bugzilla to GitLab</a></span>. <a href="https://gitlab.gnome.org/">Create your GNOME GitLab account here.</a></div>
+
+<p><a class="bz_bug_link 
+          bz_status_RESOLVED  bz_closed"
+   title="RESOLVED FIXED - Cycle through form fields with tab button"
+   href="show_bug.cgi?id=503706">Back to bug 503706</a>
+</p>
+<table border cellpadding="4">
+    <tr>
+      <th>Who</th>
+      <th>When</th>
+      <th>What</th>
+      <th>Removed</th>
+      <th>Added</th>
+    </tr>
+
+      <tr>
+        <td rowspan="2" valign="top">carlosgc
+        </td>
+        <td rowspan="2" valign="top">2007-12-15 10:22:06 UTC
+        </td>
+            <td>
+                Status
+            </td><td>UNCONFIRMED
+  </td><td>NEW
+  </td></tr><tr>
+            <td>
+                Ever confirmed
+            </td><td>0
+  </td><td>1
+  </td>
+      </tr>
+      <tr>
+        <td rowspan="1" valign="top">taylor
+        </td>
+        <td rowspan="1" valign="top">2008-11-20 21:22:55 UTC
+        </td>
+            <td>
+                CC
+            </td><td>
+  </td><td>taylor.jones
+  </td>
+      </tr>
+      <tr>
+        <td rowspan="1" valign="top">dominalien
+        </td>
+        <td rowspan="1" valign="top">2009-04-24 08:26:02 UTC
+        </td>
+            <td>
+                CC
+            </td><td>
+  </td><td>dominalien
+  </td>
+      </tr>
+      <tr>
+        <td rowspan="1" valign="top">chpe
+        </td>
+        <td rowspan="1" valign="top">2010-02-16 16:31:26 UTC
+        </td>
+            <td>
+                Keywords
+            </td><td>
+  </td><td>accessibility
+  </td>
+      </tr>
+      <tr>
+        <td rowspan="1" valign="top">jdiggs
+        </td>
+        <td rowspan="1" valign="top">2011-08-14 16:26:37 UTC
+        </td>
+            <td>
+                CC
+            </td><td>
+  </td><td>joanied
+  </td>
+      </tr>
+      <tr>
+        <td rowspan="1" valign="top">a9016009
+        </td>
+        <td rowspan="1" valign="top">2012-05-19 10:30:49 UTC
+        </td>
+            <td>
+                CC
+            </td><td>
+  </td><td>gummyduk+gnomebugzilla
+  </td>
+      </tr>
+      <tr>
+        <td rowspan="1" valign="top">el.cameleon.1
+        </td>
+        <td rowspan="1" valign="top">2012-05-19 10:39:05 UTC
+        </td>
+            <td>
+                CC
+            </td><td>
+  </td><td>el.cameleon.1
+  </td>
+      </tr>
+      <tr>
+        <td rowspan="1" valign="top">bugs
+        </td>
+        <td rowspan="1" valign="top">2012-08-24 05:51:47 UTC
+        </td>
+            <td>
+                CC
+            </td><td>
+  </td><td>bugs
+  </td>
+      </tr>
+      <tr>
+        <td rowspan="2" valign="top">apinheiro
+        </td>
+        <td rowspan="2" valign="top">2012-10-09 17:58:42 UTC
+        </td>
+            <td>
+                CC
+            </td><td>
+  </td><td>apinheiro
+  </td></tr><tr>
+            <td>
+                Blocks
+            </td><td>
+  </td><td><a class="bz_bug_link 
+          bz_status_NEW "
+   title="NEW - [Meta] Make PDF in Evince accessible with orca"
+   href="show_bug.cgi?id=677348">677348</a>
+  </td>
+      </tr>
+      <tr>
+        <td rowspan="1" valign="top">carlosgc
+        </td>
+        <td rowspan="1" valign="top">2013-02-09 17:40:47 UTC
+        </td>
+            <td>
+                CC
+            </td><td>
+  </td><td>markus
+  </td>
+      </tr>
+      <tr>
+        <td rowspan="2" valign="top">gpoo
+        </td>
+        <td rowspan="2" valign="top">2013-02-18 02:51:53 UTC
+        </td>
+            <td>
+                CC
+            </td><td>
+  </td><td>gpoo
+  </td></tr><tr>
+            <td>
+                Depends on
+            </td><td>
+  </td><td><a class="bz_bug_link 
+          bz_status_NEW "
+   title="NEW - [Metabug] Forms do not work properly"
+   href="show_bug.cgi?id=693645">693645</a>
+  </td>
+      </tr>
+      <tr>
+        <td rowspan="1" valign="top">wcbznr94zy
+        </td>
+        <td rowspan="1" valign="top">2013-04-16 17:29:11 UTC
+        </td>
+            <td>
+                CC
+            </td><td>
+  </td><td>n4kdlmx02
+  </td>
+      </tr>
+      <tr>
+        <td rowspan="1" valign="top">gpoo
+        </td>
+        <td rowspan="1" valign="top">2013-05-07 18:06:51 UTC
+        </td>
+            <td>
+                Blocks
+            </td><td>
+  </td><td><a class="bz_bug_link 
+          bz_status_NEW "
+   title="NEW - Some suggestions for filling forms UI"
+   href="show_bug.cgi?id=608688">608688</a>
+  </td>
+      </tr>
+      <tr>
+        <td rowspan="1" valign="top">adam
+        </td>
+        <td rowspan="1" valign="top">2013-06-26 21:42:14 UTC
+        </td>
+            <td>
+                CC
+            </td><td>
+  </td><td>adam
+  </td>
+      </tr>
+      <tr>
+        <td rowspan="1" valign="top">carlosgc
+        </td>
+        <td rowspan="1" valign="top">2013-07-03 07:49:44 UTC
+        </td>
+            <td>
+                Blocks
+            </td><td>
+  </td><td><a class="bz_bug_link 
+          bz_status_NEW "
+   title="NEW - Press Enter in a text field should finish the edition and move to the next field"
+   href="show_bug.cgi?id=699857">699857</a>
+  </td>
+      </tr>
+      <tr>
+        <td rowspan="1" valign="top">gpoo
+        </td>
+        <td rowspan="1" valign="top">2013-10-30 16:04:01 UTC
+        </td>
+            <td>
+                Component
+            </td><td>general
+  </td><td>PDF
+  </td>
+      </tr>
+      <tr>
+        <td rowspan="1" valign="top">Daniel.Wyatt
+        </td>
+        <td rowspan="1" valign="top">2013-11-19 00:13:39 UTC
+        </td>
+            <td>
+                CC
+            </td><td>
+  </td><td>Daniel.Wyatt
+  </td>
+      </tr>
+      <tr>
+        <td rowspan="1" valign="top">Daniel.Wyatt
+        </td>
+        <td rowspan="1" valign="top">2013-11-19 01:59:22 UTC
+        </td>
+            <td>
+                <a href="attachment.cgi?id=260185">
+                Attachment #260185</a>
+                Attachment is obsolete
+            </td><td>0
+  </td><td>1
+  </td>
+      </tr>
+      <tr>
+        <td rowspan="1" valign="top">Daniel.Wyatt
+        </td>
+        <td rowspan="1" valign="top">2013-11-19 02:56:05 UTC
+        </td>
+            <td>
+                <a href="attachment.cgi?id=260191">
+                Attachment #260191</a>
+                Attachment is obsolete
+            </td><td>0
+  </td><td>1
+  </td>
+      </tr>
+      <tr>
+        <td rowspan="1" valign="top">Daniel.Wyatt
+        </td>
+        <td rowspan="1" valign="top">2013-11-19 21:23:49 UTC
+        </td>
+            <td>
+                <a href="attachment.cgi?id=260193">
+                Attachment #260193</a>
+                Attachment is obsolete
+            </td><td>0
+  </td><td>1
+  </td>
+      </tr>
+      <tr>
+        <td rowspan="1" valign="top">carlosgc
+        </td>
+        <td rowspan="1" valign="top">2014-02-09 13:53:22 UTC
+        </td>
+            <td>
+                <a href="attachment.cgi?id=260277">
+                Attachment #260277</a>
+                Attachment status
+            </td><td>none
+  </td><td>needs-work
+  </td>
+      </tr>
+      <tr>
+        <td rowspan="1" valign="top">evfool
+        </td>
+        <td rowspan="1" valign="top">2014-03-14 13:38:34 UTC
+        </td>
+            <td>
+                <a href="attachment.cgi?id=271701">
+                Attachment #271701</a>
+                Attachment status
+            </td><td>none
+  </td><td>reviewed
+  </td>
+      </tr>
+      <tr>
+        <td rowspan="1" valign="top">AndreiPustovalov
+        </td>
+        <td rowspan="1" valign="top">2014-03-17 07:56:17 UTC
+        </td>
+            <td>
+                CC
+            </td><td>
+  </td><td>AndreiPustovalov
+  </td>
+      </tr>
+      <tr>
+        <td rowspan="1" valign="top">carlosgc
+        </td>
+        <td rowspan="1" valign="top">2014-06-24 17:35:15 UTC
+        </td>
+            <td>
+                <a href="attachment.cgi?id=271701">
+                Attachment #271701</a>
+                Attachment status
+            </td><td>reviewed
+  </td><td>committed
+  </td>
+      </tr>
+      <tr>
+        <td rowspan="2" valign="top">carlosgc
+        </td>
+        <td rowspan="2" valign="top">2014-06-25 09:28:06 UTC
+        </td>
+            <td>
+                Status
+            </td><td>NEW
+  </td><td>RESOLVED
+  </td></tr><tr>
+            <td>
+                Resolution
+            </td><td>---
+  </td><td>FIXED
+  </td>
+      </tr>
+  </table>
+
+  <p><a class="bz_bug_link 
+          bz_status_RESOLVED  bz_closed"
+   title="RESOLVED FIXED - Cycle through form fields with tab button"
+   href="show_bug.cgi?id=503706">Back to bug 503706</a>
+  </p>
+</div>
+
+
+
+<div id="footer">
+  <div class="intro"></div>
+
+
+
+
+<ul id="useful-links">
+  <li id="links-actions"><ul class="links">
+  <li><a href="./">Home</a></li>
+  <li><span class="separator">| </span><a href="enter_bug.cgi">New</a></li>
+    <li><span class="separator">| </span><a href="page.cgi?id=browse.html&amp;product=evince">Browse</a></li>
+  <li><span class="separator">| </span><a href="query.cgi">Search</a></li>
+
+  <li class="form">
+    <span class="separator">| </span>
+    <form action="buglist.cgi" method="get"
+        onsubmit="if (this.quicksearch.value == '')
+                  { alert('Please enter one or more search terms first.');
+                    return false; } return true;">
+    <input type="hidden" id="no_redirect_bottom" name="no_redirect" value="0">
+    <script type="text/javascript">
+      if (history && history.replaceState) {
+        var no_redirect = document.getElementById("no_redirect_bottom");
+        no_redirect.value = 1;
+      }
+    </script>
+    <input class="txt" type="text" id="quicksearch_bottom" name="quicksearch" 
+           title="Quick Search" value="">
+    <input class="btn" type="submit" value="Search" 
+           id="find_bottom"></form>
+  <a href="page.cgi?id=quicksearch.html" title="Quicksearch Help">[?]</a></li>
+
+  <li><span class="separator">| </span><a href="page.cgi?id=reports.html">Reports</a></li>
+
+  
+    
+      <li id="new_account_container_bottom">
+        <span class="separator">| </span>
+        <a href="createaccount.cgi">New&nbsp;Account</a>
+      </li>
+
+    <li id="mini_login_container_bottom">
+  <span class="separator">| </span>
+  <a id="login_link_bottom" href="show_activity.cgi?id=503706&amp;GoAheadAndLogIn=1"
+     onclick="return show_mini_login_form('_bottom')">Log In</a>
+
+  
+  <form action="show_activity.cgi?id=503706" method="POST" 
+        class="mini_login bz_default_hidden"
+        id="mini_login_bottom"
+        onsubmit="return check_mini_login_fields( '_bottom' );"
+  >
+    <input id="Bugzilla_login_bottom" 
+           class="bz_login"
+           name="Bugzilla_login"
+           title="Login"
+           onfocus="mini_login_on_focus('_bottom')"
+    >
+    <input class="bz_password" 
+           id="Bugzilla_password_bottom" 
+           name="Bugzilla_password"
+           type="password"
+           title="Password"
+    >
+    <input class="bz_password bz_default_hidden bz_mini_login_help" type="text" 
+           id="Bugzilla_password_dummy_bottom" value="password"
+           title="Password"
+           onfocus="mini_login_on_focus('_bottom')"
+    >
+      <input type="checkbox" id="Bugzilla_remember_bottom" 
+             name="Bugzilla_remember" value="on" class="bz_remember"
+                 checked>
+      <label for="Bugzilla_remember_bottom">Remember</label>
+    <input type="hidden" name="Bugzilla_login_token"
+           value="">
+    <input type="submit" name="GoAheadAndLogIn" value="Log in"
+            id="log_in_bottom">
+    <script type="text/javascript">
+      mini_login_constants = {
+          "login" : "login",
+          "warning" : "You must set the login and password before logging in."
+      };
+      
+      if (YAHOO.env.ua.gecko || YAHOO.env.ua.ie || YAHOO.env.ua.opera) {
+          YAHOO.util.Event.onDOMReady(function() {
+              init_mini_login_form('_bottom');
+          });
+      }
+      else {
+          YAHOO.util.Event.on(window, 'load', function () {
+              window.setTimeout(function() {
+                  init_mini_login_form('_bottom');
+              }, 200);
+          });
+    }
+    </script>
+    <a href="#" onclick="return hide_mini_login_form('_bottom')">[x]</a>
+  </form>
+</li>
+<li id="forgot_container_bottom">
+  <span class="separator">| </span>
+  <a id="forgot_link_bottom" href="show_activity.cgi?id=503706&amp;GoAheadAndLogIn=1#forgot"
+     onclick="return show_forgot_form('_bottom')">Forgot Password</a>
+  <form action="token.cgi" method="post" id="forgot_form_bottom"
+        class="mini_forgot bz_default_hidden">
+    <label for="login_bottom">Login:</label>
+    <input type="text" name="loginname" size="20" id="login_bottom">
+    <input id="forgot_button_bottom" value="Reset Password" 
+           type="submit">
+    <input type="hidden" name="a" value="reqpw">
+    <input type="hidden" id="token_bottom" name="token" value="1502138802-LKRO87PAimTAp0_lkXfIqsheMPXWmzqie0kNzAZ5mwk">
+    <a href="#" onclick="return hide_forgot_form('_bottom')">[x]</a>
+  </form>
+</li>
+</ul>
+  </li>
+
+  
+    
+
+
+  
+</ul>
+
+  <div class="outro"></div>
+</div>
+
+
+</body>
+</html>

@@ -1,8 +1,8 @@
-function [fpr tpr rs auch] = bctrt(r,ir,s,t,lab,bf,n)
+function [fpr tpr rs auch] = bctrt(r,ir,s,t,lab,bf,roc_no)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% [fpr tpr rs] = bct_rt(r,ir,s,t,lab,bf)
+% [fpr tpr rs auch] = bctrt(r,ir,s,t,lab,bf,n)
 %
-% BCT_RT: Boolean Combination (Testing) of Responses with Thresholds.
+% BCTRT: Boolean Combination (Testing) of Responses with Thresholds.
 %
 % Test combination previously achieved by BCV_RT (validation) using test sets.
 % Combine new responses (r) and scores (s) according to previously selected
@@ -47,7 +47,7 @@ rs  = false(l,nbf);
 for i=1:nbf
     b = bf(i);
     r_1 = r(:,ir(i));
-    if(mod(n,2))
+    if(mod(roc_no,2))
         r_2 = (s > t(i)); %odd
      else
         r_2 = (s <= t(i)); %even

@@ -1,8 +1,8 @@
 function [RS IR TH BF FP TP AUCH] = bcvrt(r,ir,s,t,lab,fun,n)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% [RS IR TH BF FP TP AUCH] = bcv_rt(r,ir,s,t,lab,fun)
+% [RS IR TH BF FP TP AUCH] = bcvrt(r,ir,s,t,lab,fun,n)
 %
-% BCV_RT: Boolean Combination (Validation) of Responses with Thresholds.
+% BCVRT: Boolean Combination (Validation) of Responses with Thresholds.
 %
 % Combine the resulting responses (rs) of two or several ROC curves with
 % the sampled thresholds (t) of another ROC curve according to each of the 10

@@ -1,0 +1,19 @@
+﻿<Properties StartupConfiguration="{3659AC62-583E-4B26-A995-FD1D531D4D13}|Default">
+  <MonoDevelop.Ide.ItemProperties.WindowsFormsApplication15 PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="windowsformsapplication15/Form1.Designer.cs">
+    <Files>
+      <File FileName="windowsformsapplication15/Form1.cs" Line="21" Column="32" />
+      <File FileName="windowsformsapplication15/Program.cs" Line="16" Column="10" />
+      <File FileName="windowsformsapplication15/Form1.Designer.cs" Line="29" Column="22" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore>
+      <Breakpoint file="/Users/Shariful/Downloads/GnomeANalyzer/windowsformsapplication15/Program.cs" relfile="windowsformsapplication15/Program.cs" line="19" column="1" />
+      <Breakpoint file="/Users/Shariful/Downloads/GnomeANalyzer/windowsformsapplication15/Form1.cs" relfile="windowsformsapplication15/Form1.cs" line="38" column="1" />
+    </BreakpointStore>
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MultiItemStartupConfigurations />
+</Properties>

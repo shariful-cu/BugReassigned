@@ -1,8 +1,8 @@
 function [RS TH1 TH2 BF FP TP AUCH] = bcvtt(s1,t1,s2,t2,lab,fun)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% [RS TH1 TH2 BF FP TP AUCH] = bcv_tt(s1,t1,s2,t2,lab,fun)
+% [RS TH1 TH2 BF FP TP AUCH] = bcvtt(s1,t1,s2,t2,lab,fun)
 %
-% BCV_TT: Boolean Combination (Validation) of Thresholds with Thresholds.
+% BCVTT: Boolean Combination (Validation) of Thresholds with Thresholds.
 %
 % Combine each sampled threshold (t1) from the 1rst ROC with
 % each sampled threshold (t2) from the 2nd ROC according to each of the 10

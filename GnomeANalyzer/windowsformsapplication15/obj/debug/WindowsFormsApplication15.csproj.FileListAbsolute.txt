@@ -1,0 +1,18 @@
+C:/Users/Korosh/documents/visual studio 2012/Projects/WindowsFormsApplication15/WindowsFormsApplication15/bin/Debug/StatisticsReassignemnt.exe.config
+C:/Users/Korosh/documents/visual studio 2012/Projects/WindowsFormsApplication15/WindowsFormsApplication15/bin/Debug/StatisticsReassignemnt.exe
+C:/Users/Korosh/documents/visual studio 2012/Projects/WindowsFormsApplication15/WindowsFormsApplication15/bin/Debug/StatisticsReassignemnt.pdb
+C:/Users/Korosh/documents/visual studio 2012/Projects/WindowsFormsApplication15/WindowsFormsApplication15/obj/Debug/WindowsFormsApplication15.Form1.resources
+C:/Users/Korosh/documents/visual studio 2012/Projects/WindowsFormsApplication15/WindowsFormsApplication15/obj/Debug/StatisticsReassignemnt.Properties.Resources.resources
+C:/Users/Korosh/documents/visual studio 2012/Projects/WindowsFormsApplication15/WindowsFormsApplication15/obj/Debug/WindowsFormsApplication15.csproj.GenerateResource.Cache
+C:/Users/Korosh/documents/visual studio 2012/Projects/WindowsFormsApplication15/WindowsFormsApplication15/obj/Debug/StatisticsReassignemnt.exe
+C:/Users/Korosh/documents/visual studio 2012/Projects/WindowsFormsApplication15/WindowsFormsApplication15/obj/Debug/StatisticsReassignemnt.pdb
+/Users/Shariful/Downloads/GnomeANalyzer/windowsformsapplication15/bin/Debug/StatisticsReassignemnt.exe.config
+/Users/Shariful/Downloads/GnomeANalyzer/windowsformsapplication15/bin/Debug/StatisticsReassignemnt.exe
+/Users/Shariful/Downloads/GnomeANalyzer/windowsformsapplication15/bin/Debug/StatisticsReassignemnt.pdb
+/Users/Shariful/Downloads/GnomeANalyzer/windowsformsapplication15/obj/Debug/WindowsFormsApplication15.csprojResolveAssemblyReference.cache
+/Users/Shariful/Downloads/GnomeANalyzer/windowsformsapplication15/obj/Debug/WindowsFormsApplication15.Form1.resources
+/Users/Shariful/Downloads/GnomeANalyzer/windowsformsapplication15/obj/Debug/StatisticsReassignemnt.Properties.Resources.resources
+/Users/Shariful/Downloads/GnomeANalyzer/windowsformsapplication15/obj/Debug/WindowsFormsApplication15.csproj.GenerateResource.cache
+/Users/Shariful/Downloads/GnomeANalyzer/windowsformsapplication15/obj/Debug/WindowsFormsApplication15.csproj.CoreCompileInputs.cache
+/Users/Shariful/Downloads/GnomeANalyzer/windowsformsapplication15/obj/Debug/StatisticsReassignemnt.exe
+/Users/Shariful/Downloads/GnomeANalyzer/windowsformsapplication15/obj/Debug/StatisticsReassignemnt.pdb

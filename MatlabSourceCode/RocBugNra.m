@@ -1,8 +1,8 @@
 function [fpr, tpr, auc, thr] = RocBugNra(scores,lab,nb_thresh)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% [fpr, tpr, auc, thr] = myroc(scores,lab,nb_thresh)
+% [fpr, tpr, auc, thr] = RocBugNra(scores,lab,nb_thresh)
 % 
-% MYROC: Computes tpr,fpr, auc and unique thresholds.
+% RocBugNra: Computes tpr,fpr, auc and unique thresholds.
 %
 % INPUTS:
 % scores: the output predictions scores (or probabilities) of a classifier. The

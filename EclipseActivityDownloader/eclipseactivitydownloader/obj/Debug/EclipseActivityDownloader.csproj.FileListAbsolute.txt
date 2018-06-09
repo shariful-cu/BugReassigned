@@ -1,0 +1,12 @@
+c:\users\korosh\documents\visual studio 2012\Projects\EclipseActivityDownloader\EclipseActivityDownloader\bin\Debug\EclipseActivityDownloader.exe.config
+c:\users\korosh\documents\visual studio 2012\Projects\EclipseActivityDownloader\EclipseActivityDownloader\bin\Debug\EclipseActivityDownloader.exe
+c:\users\korosh\documents\visual studio 2012\Projects\EclipseActivityDownloader\EclipseActivityDownloader\bin\Debug\EclipseActivityDownloader.pdb
+c:\users\korosh\documents\visual studio 2012\Projects\EclipseActivityDownloader\EclipseActivityDownloader\obj\Debug\EclipseActivityDownloader.Form1.resources
+c:\users\korosh\documents\visual studio 2012\Projects\EclipseActivityDownloader\EclipseActivityDownloader\obj\Debug\EclipseActivityDownloader.Properties.Resources.resources
+c:\users\korosh\documents\visual studio 2012\Projects\EclipseActivityDownloader\EclipseActivityDownloader\obj\Debug\EclipseActivityDownloader.csproj.GenerateResource.Cache
+c:\users\korosh\documents\visual studio 2012\Projects\EclipseActivityDownloader\EclipseActivityDownloader\obj\Debug\EclipseActivityDownloader.exe
+c:\users\korosh\documents\visual studio 2012\Projects\EclipseActivityDownloader\EclipseActivityDownloader\obj\Debug\EclipseActivityDownloader.pdb
+C:\Users\Korosh\Documents\Visual Studio 2012\Projects\EclipseActivityDownloader\EclipseActivityDownloader\obj\Debug\EclipseActivityDownloader.csprojResolveAssemblyReference.cache
+C:\Users\Korosh\Dropbox\Dataset\Gnome\EclipseActivityDownloader\EclipseActivityDownloader\bin\Debug\EclipseActivityDownloader.exe.config
+C:\Users\Korosh\Dropbox\Dataset\Gnome\EclipseActivityDownloader\EclipseActivityDownloader\obj\Debug\EclipseActivityDownloader.exe
+C:\Users\Korosh\Dropbox\Dataset\Gnome\EclipseActivityDownloader\EclipseActivityDownloader\obj\Debug\EclipseActivityDownloader.pdb

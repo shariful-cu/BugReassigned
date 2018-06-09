@@ -1,8 +1,8 @@
 function [fpr tpr rs auch] = bcttt(s1,t1,s2,t2,lab,bf)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% [fpr tpr rs] = bct_tt(s1,t1,s2,t2,lab,bf)
+% [fpr tpr rs auch] = bcttt(s1,t1,s2,t2,lab,bf)
 %
-% BCT_TT: Boolean Combination (Testing) of Thresholds with Thresholds.
+% BCTTT: Boolean Combination (Testing) of Thresholds with Thresholds.
 %
 % Test combination previously achieved by BCV_TT (validation) using test sets.
 % Combine selected thresholds (t1,t2) with corresponding Boolean functions(bf)
