@@ -8,15 +8,15 @@ clear;
 fprintf('\n\n*****************************************************\n');
 fprintf('        Preparing candidate HMM_RAs soft detecotors          \n');
 fprintf('*****************************************************\n');
-hmpath = '/Users/Shariful/Documents/BugReAssgn/PreparedData/Eclipse/Sampling/OS/';
+hmpath = '/Users/Shariful/Documents/BugReAssgn/PreparedData/Gnome/Sampling/Status/';
 ldpath = strcat(hmpath, 'Val');
 [valSeqs, valLab, noValNra, noValRa] = ldseqs(ldpath);
 fprintf('Loaded %d "Not reassigned" (NRA) observations (val)\n', noValNra);
 fprintf('Loaded %d "Reassigned" (RA) observations (val)\n', noValRa);
 
 % COMPUTING scores on the Validation set for all the HMM_RAs soft detectors
-trnHmmPath= '/Users/Shariful/Documents/BugReAssgn/TrainedHMMs/Eclipse/Os';
-raHmms = (10:10:20); 
+trnHmmPath= '/Users/Shariful/Documents/BugReAssgn/TrainedHMMs/Gnome/Status';
+raHmms = (10:10:200); 
 nb_thresh = 100;
 fprintf('Computing... scores for %d HMM_RAs soft detectors (val)\n', length(raHmms));
 [scrValRa, aucRaVal] = scr_ra(trnHmmPath, valSeqs, valLab, raHmms, nb_thresh);
@@ -38,9 +38,10 @@ fprintf('Only %d HMM_RAs are selected as the most diverse HMM_RAs out of %d! \n'
 % scores of the selected HMM_RA soft detectors 
 % scrValRa = scrValRa(selHmms);
 
+nraHmm = [20; 40; 200];
 % COMPUTING scores for each corresponding selected HMM_NRAs soft detectors
 fprintf('Computing... scores for the corresponding %d selected HMM_NRAs soft detectors (val)\n', length(selHmms));
-[scrValNra, aucNraVal] = scr_nra(trnHmmPath, valSeqs, valLab, selHmms*10, nb_thresh);
+[scrValNra, aucNraVal] = scr_nra(trnHmmPath, valSeqs, valLab, nraHmm, nb_thresh);
 % marging the selected validation scores
 fprintf('Marging scores of the selected HMM_RAs & HMM_NRAs soft detectors\n');
 scr_val = cell(1,length(selHmms)*2); idx = 1;
@@ -66,9 +67,16 @@ figure; hold all; roc_fig_set; lmx=cell(1,1); lc=1;
 set(gcf,'visible','on')
 
 % ploting origianl ROC curves
-
+dd = 1;
 for i = 1 : length(scrValRa)
     [fpr, tpr, auc, thr] = RocBugRa(scrValRa{i},valLab,nb_thresh);
+    h1 = plot(fpr, tpr, ':ok');
+    if (dd == 4) 
+        dd = 1;
+    end
+    [fpr, tpr, auc, thr] = RocBugNra(scrValNra{dd},valLab,nb_thresh);
+    dd = dd + 1;
+    fpr = fpr-0.001; tpr = tpr - 0.01;
     h1 = plot(fpr, tpr, ':ok');
 end
 % ploting selected diverse ROC curves
@@ -87,7 +95,7 @@ avgAucValNra = avgAucValNra / length(selHmms);
 % or a combination of the selected ROC curves using WPIBC
 h4 = plot(wpbcFprVal,wpbcTprVal,'--*r');
 
-legend([h1, h2, h3, h4],sprintf('%d pruned redundant HMMRAs soft detectors', length(scrValRa) - length(selHmms)),...
+legend([h1, h2, h3, h4],sprintf('%d pruned redundant soft detectors', 2*(length(scrValRa) - length(selHmms))),...
     sprintf('%d selected HMMRAs, Avg AUC=%.3f', length(selHmms), avgAucValRa),...
     sprintf('%d selected HMMNRAs, Avg AUC=%.3f', length(selHmms), avgAucValNra),...
     sprintf('WPIBC, AUC=%.3f', aucWpbcVal),...
@@ -95,7 +103,7 @@ legend([h1, h2, h3, h4],sprintf('%d pruned redundant HMMRAs soft detectors', len
 %title('ROC curves of 20 soft HMMs detectors')
 svPath = '/Users/Shariful/Documents/BugReAssgn/Figures/';
 figname = sprintf('%sWPIBC_Val', svPath);
-% saveas(gcf,[figname,'.fig']);
+saveas(gcf,[figname,'.fig']);
 
 set(gcf,'PaperPositionMode','auto');
 set(gca,'fontsize',12);
@@ -115,11 +123,13 @@ ldpath = strcat(hmpath, 'Test');
 [testSeqs, testlab, nonra, nora] = ldseqs(ldpath);
 fprintf('Loaded %d NRA observations (test)\n', nonra);
 fprintf('Loaded %d RA observations (test)\n', nora);
+% testSeqs = testSeqs(1:2700);
+% testlab = testlab(1:2700);
 
 % Computing scores on Testing set
 fprintf('Computing...socres on testing set\n');
 [scrTestRa, aucRaTest] = scr_ra(trnHmmPath, testSeqs, testlab, selHmms*10, nb_thresh);
-[scrTestNra, aucNraTest] = scr_nra(trnHmmPath, testSeqs, testlab, selHmms*10, nb_thresh);
+[scrTestNra, aucNraTest] = scr_nra(trnHmmPath, testSeqs, testlab, nraHmm, nb_thresh);
 % marging the testing scores
 scr_test = cell(1,length(selHmms)*2); idx = 1;
 for i = 1 : length(selHmms)
@@ -132,10 +142,13 @@ fprintf('Computing scores is done!\n');
 % Combining decisions using the constructed Boolean combination rules
 fprintf('Combining...decisions using the constructed Boolean combination rules\n')
 [fprWpbc,tprWpbc,aucWpbcTest,rrr] = ibctr(scr_test,testlab,ttb);
+
+% computing best precision, recall, and f-measure
+[pr, rc, fm, max_fm, best_idx] = f_measure(rrr, testlab);
+
 fprintf('***************************************************\n');
 fprintf('            TESTING of WPIBC is DONE!         \n');
 fprintf('*****************************************************\n');
-
 
 %% ANALASIS (Testing) on ROC space 
 figure; hold all; roc_fig_set; lmx=cell(1,1); lc=1;

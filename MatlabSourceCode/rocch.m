@@ -26,6 +26,7 @@ fp=[fp; 1];
 tp=[tp; 0];
 
 % [idx, auch] = convhull(fp,tp); % Matlab <= 2009a
+
 [idx, auch] = convhull(fp,tp,'simplify',true); % Matlab > 2009a
 % removing vertices that do not contribute to the area/volume of the convex
 % hull, the default is false
